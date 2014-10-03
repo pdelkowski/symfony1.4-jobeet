@@ -1,7 +1,10 @@
 job_show_user:
   url:     /job/:company/:location/:id/:position
   class:   sfDoctrineRoute
-  options: { model: JobeetJob, type: object }
+  options: 
+    model: JobeetJob
+    type: object
+    method_for_query: retrieveActiveJob 
   param:   { module: job, action: show }
   requirements:
     id: \d+
@@ -11,6 +14,13 @@ job_show_user:
 homepage:
   url:   /
   param: { module: job, action: index }
+
+categories:
+  url: /categories/:id/
+  param: { module: category, action: index }
+  options:
+    model: JobeetCategory
+    type: object
 
 # generic rules
 # please, remove them by adding more specific rules

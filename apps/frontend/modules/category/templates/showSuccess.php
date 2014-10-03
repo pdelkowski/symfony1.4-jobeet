@@ -1,13 +1,13 @@
 <?php use_stylesheet('jobs.css') ?>
-<h1>Jobeet jobs List</h1>
+<h1>Jobeet category jobs</h1>
 <div id="jobs">
-  <?php foreach ($categories as $category): ?>
+  <?php if($category): ?>
     <div class="category_<?php echo $category->getName() ?>">
       <div class="category">
         <div class="feed">
           <a href="">Feed</a>
         </div>
-        <a href="<?php echo url_for('category/show?id='.$category->getId()) ?>"><h1><?php echo $category ?></h1></a>
+        <h1><?php echo $category ?></h1>
       </div>
  
       <table class="jobs">
@@ -26,5 +26,5 @@
         <?php endforeach; ?>
       </table>
     </div>
-  <?php endforeach; ?>
+  <?php endif; ?>
 </div>
