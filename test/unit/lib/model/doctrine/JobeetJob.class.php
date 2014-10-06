@@ -21,8 +21,8 @@ class JobeetJobTest extends Test_Case_Unit
     	'name' => 'My Category',
     	'created_at' => date('Y:m:d H:i:s', time()),
     	'updated_at' => date('Y:m:d H:i:s', time())
-	));
-	$category->save();
+  	));
+  	$category->save();
 
     $this->assertNotNull($category);
 	 
@@ -43,8 +43,6 @@ class JobeetJobTest extends Test_Case_Unit
 
   	$this->assertNotNull($job);
   	$expiresAt = date('Y-m-d', time() + 86400 * sfConfig::get('app_active_days'));
-	$this->assertEquals($expiresAt, $job->getDateTimeObject('expires_at')->format('Y-m-d'), '->save() updates expires_at if not set');
-
-
+	  $this->assertEquals($expiresAt, $job->getDateTimeObject('expires_at')->format('Y-m-d'), '->save() updates expires_at if not set');
   }
 }

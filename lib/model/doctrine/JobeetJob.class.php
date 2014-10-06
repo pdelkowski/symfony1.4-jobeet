@@ -70,6 +70,22 @@ class JobeetJob extends BaseJobeetJob
 		return $c->getName();
 	}
 
+	public function asArray($host)
+	{
+	    return array(
+	      'category'     => $this->getCategoryName(),
+	      'type'         => $this->getType(),
+	      'company'      => $this->getCompany(),
+	      'logo'         => $this->getLogo() ? 'http://'.$host.'/uploads/jobs/'.$this->getLogo() : null,
+	      'url'          => $this->getUrl(),
+	      'position'     => $this->getPosition(),
+	      'location'     => $this->getLocation(),
+	      'description'  => $this->getDescription(),
+	      'how_to_apply' => $this->getHowToApply(),
+	      'expires_at'   => $this->getCreatedAt(),
+	    );
+	}
+
 	public function __toString()
 	{
 		return sprintf('%s at %s (%s)', $this->getPosition(), $this->getCompany(), $this->getLocation());
