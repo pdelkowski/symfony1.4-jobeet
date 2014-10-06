@@ -1,5 +1,5 @@
 <?php
-require_once(sfConfig::get('sf_lib_dir' . '/form/doctrine/BaseFormDoctrine.class.php'));
+
 /**
  * JobeetJob form base class.
  *
@@ -7,7 +7,7 @@ require_once(sfConfig::get('sf_lib_dir' . '/form/doctrine/BaseFormDoctrine.class
  *
  * @package    jobeet
  * @subpackage form
- * @author     Piotr Delkowski
+ * @author     Your name here
  * @version    SVN: $Id: sfDoctrineFormGeneratedTemplate.php 29553 2010-05-20 14:33:00Z Kris.Wallsmith $
  */
 abstract class BaseJobeetJobForm extends BaseFormDoctrine
@@ -23,8 +23,8 @@ abstract class BaseJobeetJobForm extends BaseFormDoctrine
       'url'          => new sfWidgetFormInputText(),
       'position'     => new sfWidgetFormInputText(),
       'location'     => new sfWidgetFormInputText(),
-      'description'  => new sfWidgetFormInputText(),
-      'how_to_apply' => new sfWidgetFormInputText(),
+      'description'  => new sfWidgetFormTextarea(),
+      'how_to_apply' => new sfWidgetFormTextarea(),
       'token'        => new sfWidgetFormInputText(),
       'is_public'    => new sfWidgetFormInputCheckbox(),
       'is_activated' => new sfWidgetFormInputCheckbox(),
@@ -43,8 +43,8 @@ abstract class BaseJobeetJobForm extends BaseFormDoctrine
       'url'          => new sfValidatorString(array('max_length' => 255, 'required' => false)),
       'position'     => new sfValidatorString(array('max_length' => 255)),
       'location'     => new sfValidatorString(array('max_length' => 255)),
-      'description'  => new sfValidatorString(array('max_length' => 255)),
-      'how_to_apply' => new sfValidatorString(array('max_length' => 255)),
+      'description'  => new sfValidatorString(array('max_length' => 4000)),
+      'how_to_apply' => new sfValidatorString(array('max_length' => 4000)),
       'token'        => new sfValidatorString(array('max_length' => 255)),
       'is_public'    => new sfValidatorBoolean(array('required' => false)),
       'is_activated' => new sfValidatorBoolean(array('required' => false)),

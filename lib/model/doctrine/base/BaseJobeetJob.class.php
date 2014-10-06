@@ -54,7 +54,7 @@
  * 
  * @package    jobeet
  * @subpackage model
- * @author     Piotr Delkowski
+ * @author     Your name here
  * @version    SVN: $Id: Builder.php 7490 2010-03-29 19:53:27Z jwage $
  */
 abstract class BaseJobeetJob extends sfDoctrineRecord
@@ -93,15 +93,15 @@ abstract class BaseJobeetJob extends sfDoctrineRecord
              'notnull' => true,
              'length' => 255,
              ));
-        $this->hasColumn('description', 'string', 255, array(
+        $this->hasColumn('description', 'string', 4000, array(
              'type' => 'string',
              'notnull' => true,
-             'length' => 255,
+             'length' => 4000,
              ));
-        $this->hasColumn('how_to_apply', 'string', 255, array(
+        $this->hasColumn('how_to_apply', 'string', 4000, array(
              'type' => 'string',
              'notnull' => true,
-             'length' => 255,
+             'length' => 4000,
              ));
         $this->hasColumn('token', 'string', 255, array(
              'type' => 'string',

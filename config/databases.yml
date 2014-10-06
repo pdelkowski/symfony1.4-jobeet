@@ -4,4 +4,12 @@ all:
     param:
       dsn: 'mysql:host=localhost;dbname=jobeet'
       username: root
-      password: null
+      password: qwerty
+
+test:
+  doctrine:
+    class: sfDoctrineDatabase
+    param:
+      dsn: 'mysql:host=localhost;dbname=jobeet_test'
+      username: root
+      password: qwerty
