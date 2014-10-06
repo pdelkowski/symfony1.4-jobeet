@@ -87,4 +87,24 @@ class JobeetJobTable extends Doctrine_Table
    
       return $q;
     }
+
+    public function getLatestPost()
+    {
+      $q = Doctrine_Query::create()->from('JobeetJob j');
+   
+      $this->addActiveJobsQuery($q);
+   
+      return $q->fetchOne();
+    }
+
+    public function getForToken(array $parameters)
+    {
+      $affiliate = Doctrine_Core::getTable('JobeetAffiliate')->findOneByToken($parameters['token']);
+      if(!$affiliate || !$affiliate->getIsActive()) {
+        throw new sfError404Exception(sprintf('Affiliate with token "%s" does not exist or is not activated.', $parameters['token']));
+      }
+
+      return $affiliate->getActiveJobs();
+
+    }
 }
