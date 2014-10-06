@@ -23,7 +23,7 @@
             <div class="post">
               <h2>Ask for people</h2>
               <div>
-                <a href="<?php echo url_for('job/index') ?>">Post a Job</a>
+                <a href="<?php echo url_for('job/new') ?>">Post a Job</a>
               </div>
             </div>
  
@@ -40,6 +40,17 @@
             </div>
           </div>
         </div>
+      </div>
+
+      <div id="job_history">
+        Recent viewed jobs:
+        <ul>
+          <?php foreach ($sf_user->getJobHistory() as $job): ?>
+            <li>
+              <?php echo link_to($job->getPosition().' - '.$job->getCompany(), 'job_show_user', $job) ?>
+            </li>
+          <?php endforeach ?>
+        </ul>
       </div>
  
       <div id="content">

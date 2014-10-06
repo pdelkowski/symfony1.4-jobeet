@@ -10,14 +10,28 @@ job_show_user:
     id: \d+
     sf_method: [get]
 
+job:
+  class:        sfDoctrineRouteCollection
+  options:      
+    model:          JobeetJob
+    column:         token
+    object_actions: { publish: put }
+  requirements: { token: \w+ }
+
+job_create:
+  url: /job/create
+  param: { module: job, action: new }
+
+
 # default rules
 homepage:
   url:   /
   param: { module: job, action: index }
 
-categories:
-  url: /categories/:id/
-  param: { module: category, action: index }
+category:
+  url: /category/:slug
+  class: sfDoctrineRoute
+  param: { module: category, action: show }
   options:
     model: JobeetCategory
     type: object
