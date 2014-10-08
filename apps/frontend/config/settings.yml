@@ -19,7 +19,7 @@ test:
     error_reporting:        <?php echo (E_ALL | E_STRICT)."\n" ?>
     cache:                  false
     web_debug:              false
-    no_script_name:         false
+    no_script_name:         true
     etag:                   false
 
 all:
@@ -35,3 +35,8 @@ all:
     use_database:           true
 
     enabled_modules:      [default, sfGuardAuth]
+
+    default_culture: en_US
+    charset: utf-8
+    i18n: true
+    standard_helpers: [Partial, Cache, I18N]

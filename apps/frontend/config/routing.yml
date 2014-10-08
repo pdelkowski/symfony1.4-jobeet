@@ -1,3 +1,17 @@
+localized_homepage:
+  url:   /:sf_culture/
+  param: { module: job, action: index }
+  requirements:
+    sf_culture: (?:fr|en)
+
+change_language:
+  url:   /change_language
+  param: { module: language, action: changeLanguage }
+    
+job_search:
+  url:   /:sf_culture//search
+  param: { module: job, action: search }
+
 api_jobs:
   url:     /api/:token/jobs.:sf_format
   class:   sfDoctrineRoute
@@ -7,7 +21,7 @@ api_jobs:
     sf_format: (?:xml|json|yaml)
     
 job_show_user:
-  url:     /job/:company/:location/:id/:position
+  url:     /:sf_culture/job/:company/:location/:id/:position
   class:   sfDoctrineRoute
   options: 
     model: JobeetJob
@@ -24,12 +38,20 @@ job:
     model:          JobeetJob
     column:         token
     object_actions: { publish: put }
+    prefix_path:    /:sf_culture/job
   requirements: { token: \w+ }
 
 job_create:
   url: /job/create
   param: { module: job, action: new }
 
+affiliate:
+  class:   sfDoctrineRouteCollection
+  options:
+    model: JobeetAffiliate
+    actions: [new, create]
+    object_actions: { wait: get }
+    prefix_path:    /:sf_culture/affiliate
 
 # default rules
 homepage:
@@ -37,12 +59,12 @@ homepage:
   param: { module: job, action: index }
 
 category:
-  url: /category/:slug
-  class: sfDoctrineRoute
-  param: { module: category, action: show }
-  options:
-    model: JobeetCategory
-    type: object
+  url:     /:sf_culture/category/:slug.:sf_format
+  class:   sfDoctrineRoute
+  param:   { module: category, action: show, sf_format: html }
+  options: { model: JobeetCategory, type: object, method: doSelectForSlug }
+  requirements:
+    sf_format: (?:html|atom)
 
 # generic rules
 # please, remove them by adding more specific rules
