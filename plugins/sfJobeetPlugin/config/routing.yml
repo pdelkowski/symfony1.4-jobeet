@@ -9,7 +9,7 @@ change_language:
   param: { module: sfJobeetLanguage, action: changeLanguage }
     
 job_search:
-  url:   /:sf_culture//search
+  url:   /:sf_culture/search
   param: { module: sfJobeetJob, action: search }
 
 api_jobs:
@@ -42,7 +42,6 @@ job:
     module:         sfJobeetJob
   requirements: { token: \w+ }
 
-
 affiliate:
   class:   sfDoctrineRouteCollection
   options:
@@ -52,11 +51,6 @@ affiliate:
     prefix_path:    /:sf_culture/affiliate
     module:         sfJobeetAffiliate
 
-# default rules
-homepage:
-  url:   /
-  param: { module: sfJobeetJob, action: index }
-
 category:
   url:     /:sf_culture/category/:slug.:sf_format
   class:   sfDoctrineRoute
@@ -65,11 +59,4 @@ category:
   requirements:
     sf_format: (?:html|atom)
 
-# generic rules
-# please, remove them by adding more specific rules
-default_index:
-  url:   /:module
-  param: { action: index }
 
-default:
-  url:   /:module/:action/*

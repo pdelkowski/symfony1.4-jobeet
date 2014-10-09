@@ -14,10 +14,6 @@ class sfJobeetApiActions extends sfActions
 	  {
 	    $this->jobs = array();
 
-	    $this->jobs = JobeetJobApi::generateJobArrayApi($this->getRoute()->getObjects(), $request->getHost());
-	    // print_r($this->jobs);
-	    // die;
-
 	    foreach ($this->getRoute()->getObjects() as $job)
 	    {
 	      $this->jobs[$this->generateUrl('job_show_user', $job, true)] = $job->asArray($request->getHost());

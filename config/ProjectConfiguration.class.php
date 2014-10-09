@@ -26,6 +26,7 @@ class ProjectConfiguration extends sfProjectConfiguration
     $this->enablePlugins('sfDoctrineGuardPlugin');
     $this->enablePlugins('sfFormExtraPlugin');
     $this->enablePlugins('sfJobeetPlugin');
+    $this->enablePlugins('sfNuSoapPlugin');
     
     if( PHP_SAPI == 'cli' )
 	{
