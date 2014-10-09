@@ -34,7 +34,7 @@ all:
     # Enable the database manager
     use_database:           true
 
-    enabled_modules:      [default, sfGuardAuth]
+    enabled_modules:      [default, sfGuardAuth, sfJobeetAffiliate, sfJobeetApi, sfJobeetCategory, sfJobeetJob, sfJobeetLanguage]
 
     default_culture: en_US
     charset: utf-8
