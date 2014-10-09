@@ -26,9 +26,16 @@ class sfJobeetLanguageActions extends sfActions
       $this->getUser(),
       array('languages' => array('en', 'fr'))
     );
+    $form->disableLocalCSRFProtection();
  
     $form->process($request);
  
     return $this->redirect('localized_homepage');
+  }
+
+  public function executeLanguage(sfWebRequest $request)
+  {
+    $this->form = new sfFormLanguage($this->getUser(), array('languages' => array('en', 'fr')));
+    $this->form->disableLocalCSRFProtection();
   }
 }

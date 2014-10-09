@@ -42,9 +42,6 @@ job:
     module:         sfJobeetJob
   requirements: { token: \w+ }
 
-job_create:
-  url: /job/create
-  param: { module: job, action: new }
 
 affiliate:
   class:   sfDoctrineRouteCollection

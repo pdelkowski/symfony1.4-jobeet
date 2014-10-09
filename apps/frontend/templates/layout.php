@@ -27,7 +27,7 @@
             <div class="post">
               <h2>Ask for people</h2>
               <div>
-                <a href="<?php echo url_for('job/new') ?>">Post a Job</a>
+                <a href="<?php echo url_for('sfJobeetJob/new') ?>">Post a Job</a>
               </div>
             </div>
  

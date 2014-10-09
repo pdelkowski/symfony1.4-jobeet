@@ -95,6 +95,13 @@ class sfJobeetJobActions extends sfActions
    
     $job = $this->getRoute()->getObject();
     $job->publish();
+
+    // remove cache after new job is added
+    if ($cache = $this->getContext()->getViewCacheManager())
+    {
+      $cache->remove('sfJobeetJob/index?sf_culture=*');
+      $cache->remove('sfJobeetCategory/show?id='.$job->getJobeetCategory()->getId());
+    }
    
     $this->getUser()->setFlash('notice', sprintf('Your job is now online for %s days.', sfConfig::get('app_active_days')));
    
