@@ -1,8 +1,20 @@
 JobeetJob:
 <?php
 $time = time();
+
+$locations = array(
+  array('city' => 'Los Angeles', 'state' => 'California'),
+  array('city' => 'Boston', 'state' => 'Massachusetts'),
+  array('city' => 'San Diego', 'state' => 'California'),
+  array('city' => 'Houston', 'state' => 'Texas'),
+  array('city' => 'Phoenix', 'state' => 'Arizona')
+);
+
 for ($i = 100; $i <= 130; $i++):
   $time++;
+  $location = $locations[rand()%5];
+  $state = $location['state'];
+  $city = $location['city'];
   $date = date('Y-m-d H:i:s', $time);
   $expires_date = date('Y-m-d H:i:s', 86400*30+$time);
 ?>
@@ -10,7 +22,7 @@ for ($i = 100; $i <= 130; $i++):
     JobeetCategory: programming
     company:      Company <?php echo $i."\n" ?>
     position:     Web Developer
-    location:     Paris, France
+    location:     <?php echo $city.", ".$state."\n" ?>
     description:  Lorem ipsum dolor sit amet, consectetur adipisicing elit.
     how_to_apply: |
       Send your resume to lorem.ipsum [at] company_<?php echo $i ?>.sit

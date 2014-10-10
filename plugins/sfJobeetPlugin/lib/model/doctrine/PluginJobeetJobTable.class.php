@@ -68,6 +68,8 @@ class PluginJobeetJobTable extends Doctrine_Table
         return $q;
     }
 
+
+
     public function cleanup($days)
     {
       $q = $this->createQuery('a')

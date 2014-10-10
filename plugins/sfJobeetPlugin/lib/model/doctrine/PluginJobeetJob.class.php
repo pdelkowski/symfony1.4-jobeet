@@ -85,6 +85,61 @@ abstract class PluginJobeetJob extends BaseJobeetJob
 	    );
 	}
 
+	/**
+	 * Return the url for wsdl with data of people living in particular city/state
+	 * @return string
+	 */
+	private function getUrlForDeFactoSF1Wsdl()
+    {
+        return sfConfig::get('app_wsdl_defactosf1_url');
+    }
+
+    private function getDefactoSF1Key()
+    {
+    	return sfConfig::get('app_defactosf1_key');
+    }
+
+	/**
+	 * Return object with state and city
+	 * @param  string $location 
+	 * @return stdClass          
+	 */
+	protected function splitLocation($location)
+	{
+		$loc = explode(',', $location);
+		$obj = new stdClass();
+		$obj->city = trim($loc[0]);
+		$obj->state = trim($loc[1]);
+		return $obj;
+	}
+
+	/**
+	 * Retrives information about the amount of people living in city/state
+	 * @return [type]       [description]
+	 */
+	public function getPeopleLiving()
+	{
+		$method = 'DeFactoSF1Part1ByNameState';
+		$location = $this->splitLocation($this->getLocation());
+	    $results = null;
+
+	    $results = sfJobeetSoapApi::request($this->getUrlForDeFactoSF1Wsdl(), $method, array(
+	    	'place'	=> $location->city,
+	    	'state' => $location->state,
+	    	'key' => $this->getDefactoSF1Key()
+	    ));
+
+	    $response = $results['DeFactoSF1Part1ByNameStateResult']['Total'];
+
+	    if ( !$response || $response == '') {
+	    	$response = 'Not Found';
+	    } else {
+	    	$response = $results['DeFactoSF1Part1ByNameStateResult']['Total'];
+	    }
+
+    	return $response;
+	}
+
 	public function __toString()
 	{
 		return sprintf('%s at %s (%s)', $this->getPosition(), $this->getCompany(), $this->getLocation());

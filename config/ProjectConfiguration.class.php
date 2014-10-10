@@ -20,6 +20,12 @@ class ProjectConfiguration extends sfProjectConfiguration
     self::$zendLoaded = true;
   }
 
+  public function configureDoctrine(Doctrine_Manager $manager)
+  {
+    // $manager->setAttribute(Doctrine_Core::ATTR_RESULT_CACHE, new Doctrine_Cache_Apc());
+    $manager->registerHydrator('soap_people_hydrator', 'Doctrine_Hydrator_SoapPeopleHydrator');
+  }
+
   public function setup()
   {
     $this->enablePlugins('sfDoctrinePlugin');

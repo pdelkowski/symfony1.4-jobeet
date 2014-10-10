@@ -90,7 +90,7 @@
               <?php echo link_to(__('Full feed'), 'job', array('sf_format' => 'atom')) ?>
             </li>
             <li>
-              <a href=""><?php echo __('Jobeet API') ?></a>
+              <?php echo link_to(__('Jobeet API'), 'api_jobs', array('token' => 'sensio_labs', 'sf_format' => 'json')) ?>
             </li>
             <li class="last">
               <?php echo link_to(__('Become an affiliate'), 'affiliate_new') ?>

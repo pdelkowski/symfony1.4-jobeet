@@ -1,8 +1,8 @@
 # default rules
 homepage:
   url:   /
-  # param: { module: sfJobeetJob, action: index }
-  param: { module: cityinfo, action: index }
+  param: { module: sfJobeetJob, action: index }
+  # param: { module: cityinfo, action: index }
 
 # generic rules
 # please, remove them by adding more specific rules

@@ -1,6 +1,6 @@
 <?php
 
-class SoapApiaaa
+class SoapApiaa
 {
     public static $response = array();
 

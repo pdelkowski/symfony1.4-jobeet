@@ -25,7 +25,7 @@ class cityinfoActions extends sfActions
     $this->results = '';
 
    	try {
-	    $this->results = SoapApi::Call($method, array(
+	    $this->results = SoapApi::request($method, array(
 	    	'place'	=> $city,
 	    	'state' => $state,
 	    	'key' => $key

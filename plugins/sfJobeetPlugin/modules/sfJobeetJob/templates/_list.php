@@ -10,6 +10,9 @@
       <td class="company">
         <?php echo $job->getCompany() ?>
       </td>
+      <td class="company">
+        <?php echo 'Live people: '.$job->getPeopleLiving() ?>
+      </td>
     </tr>
   <?php endforeach; ?>
 </table>

@@ -21,11 +21,11 @@ abstract class PluginJobeetCategory extends BaseJobeetCategory
 	  return Doctrine_Core::getTable('JobeetJob')->addActiveJobsQuery($q);
 	}
 
-	public function getActiveJobs($max = 10)
+	public function getActiveJobs($max = 10, $people = false)
 	{
 	  $q = $this->getActiveJobsQuery()
 	    ->limit($max);
-	 
+
 	  return $q->execute();
 	}
 	 

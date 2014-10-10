@@ -22,6 +22,8 @@ class PluginJobeetCategoryTable extends Doctrine_Table
     	$q = $this->createQuery('c')
     	    ->leftJoin('c.JobeetJobs j')
     	    ->where('j.expires_at > ?', date('Y:m:d H:i:m', time()));    
+      // $q->setHydrationMode(Doctrine::HYDRATE_RECORD);
+
     	return $q->execute();
     }
 
